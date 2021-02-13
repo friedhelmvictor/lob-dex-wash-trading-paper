@@ -4,6 +4,9 @@ This repository contains the implementation of a wash trade detection process fo
 
 ## Instructions
 
+You will need at least 32GB RAM, or large enough swap space to run everything.
+It took about 2.5 hours to run everything on a Ryzen 5 3600.
+
 ### Data
 
 The following data files can be downloaded from Zenodo, and should be placed in the `data` directory:
@@ -98,14 +101,38 @@ We use the following parameters:
 
 Executing wash trade detection for IDEX (this takes about 2 hours):
 ```
-Rscript pipeline_wash_trading_paper.R -d "IDEX" -t data/IDEXTrades-preprocessed.csv -p data/EtherDollarPrice.csv -o output/idex-t100-1h-1d-1w-1pmargin --washdetectionether=FALSE -m 0.01 --washwindowsizesecondspass1=3600 --washwindowsizesecondspass2=86400 --washwindowsizesecondspass3=604800
+Rscript pipeline_wash_trading_paper.R -d "IDEX" \
+-t data/IDEXTrades-preprocessed.csv \
+-p data/EtherDollarPrice.csv \
+-o output/idex-t100-1h-1d-1w-1pmargin \
+--sccthresholdrank=100 \
+--washdetectionether=FALSE \
+-m 0.01 \
+--washwindowsizesecondspass1=3600 \
+--washwindowsizesecondspass2=86400 \
+--washwindowsizesecondspass3=604800
 ```
 
 Executing wash trade detection for IDEX (this takes about 15 minutes)
 ```
-Rscript pipeline_wash_trading_paper.R -d "EtherDelta" -t data/EtherDeltaTrades-preprocessed.csv -p data/EtherDollarPrice.csv -o output/etherdelta-t100-1h-1d-1w-1pmargin --washdetectionether=FALSE -m 0.01 --washwindowsizesecondspass1=3600 --washwindowsizesecondspass2=86400 --washwindowsizesecondspass3=604800
+Rscript pipeline_wash_trading_paper.R -d "EtherDelta" \
+-t data/EtherDeltaTrades-preprocessed.csv \
+-p data/EtherDollarPrice.csv \
+-o output/etherdelta-t100-1h-1d-1w-1pmargin \
+--sccthresholdrank=100 \
+--washdetectionether=FALSE \
+-m 0.01 \
+--washwindowsizesecondspass1=3600 \
+--washwindowsizesecondspass2=86400 \
+--washwindowsizesecondspass3=604800
 ```
 ### Statistics and Plots
+For plotting, you will need the following additional R packages:
+* ggplot2
+* scales
+* RColorBrewer
+* ggthemes
+* extrafont
 
-To create the plots, you need to run `paper_plots.R`.
+To create the plots, run `paper_plots.R`.
 Depending on your output file location, you may need to adjust some variables at the beginning of that file.
