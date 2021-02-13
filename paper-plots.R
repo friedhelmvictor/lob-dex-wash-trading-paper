@@ -318,7 +318,7 @@ wash_timeframe_plot <- ggplot(wash_timeframe) +
   facet_grid(DEX_f ~ ., scales = "free_y") +
   scale_x_continuous(label = scales::percent, breaks = seq(0,1,0.1)) +
   theme_Publication() +
-  labs(x="Timeframe within a tokens trading lifespan", y="Tokens with wash trading activity")
+  labs(x="Timeframe within a token's trading lifespan", y="Tokens with wash trading activity")
 wash_timeframe_plot
 
 
@@ -351,7 +351,7 @@ ggplot(monthly_wash_volume) +
   scale_x_date(labels = date_format("%Y-%m")) +
   scale_y_continuous(labels = scales::comma) +
   facet_grid(DEX_f ~ ., scales = "free_y") + 
-  labs(x="Month", y="Wash trade volume") + 
+  labs(x="Month", y="Wash trade volume in U.S. Dollars") + 
   theme_Publication()
 ggsave(filename = paste0(output_folder, "monthly_wash_vol.pdf"), width = 6, height = 4, device=cairo_pdf)
 
