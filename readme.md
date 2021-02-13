@@ -9,7 +9,7 @@ It took about 2.5 hours to run everything on a Ryzen 5 3600.
 
 ### Data
 
-The following data files can be downloaded from Zenodo, and should be placed in the `data` directory:
+[The following data files can be downloaded from Zenodo](https://zenodo.org/record/4540223), and should be placed in the `data` directory:
 * `EtherDeltaTrades.csv`: EtherDelta trades
 * `IDEXTrades.csv`: IDEX trades
 * `EtherDollarPrice.csv`: daily ETH-USD prices
